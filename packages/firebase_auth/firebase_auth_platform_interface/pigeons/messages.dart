@@ -17,10 +17,11 @@ import 'package:pigeon/pigeon.dart';
       package: 'io.flutter.plugins.firebase.auth',
       className: 'GeneratedAndroidFirebaseAuth',
     ),
-    objcHeaderOut:
-        '../firebase_auth/ios/firebase_auth/Sources/firebase_auth/include/Public/firebase_auth_messages.g.h',
-    objcSourceOut:
-        '../firebase_auth/ios/firebase_auth/Sources/firebase_auth/firebase_auth_messages.g.m',
+    objcHeaderOut: '../firebase_auth/ios/firebase_auth/Sources/firebase_auth/include/Public/firebase_auth_messages.g.h',
+    objcSourceOut: '../firebase_auth/ios/firebase_auth/Sources/firebase_auth/firebase_auth_messages.g.m',
+    gobjectHeaderOut: '../firebase_auth/linux/messages.g.h',
+    gobjectSourceOut: '../firebase_auth/linux/messages.g.cc',
+    gobjectOptions: GObjectOptions(),
     cppHeaderOut: '../firebase_auth/windows/messages.g.h',
     cppSourceOut: '../firebase_auth/windows/messages.g.cpp',
     cppOptions: CppOptions(namespace: 'firebase_auth_windows'),
@@ -458,7 +459,7 @@ class PigeonUserProfile {
 @HostApi(dartHostTestHandler: 'TestFirebaseAuthUserHostApi')
 abstract class FirebaseAuthUserHostApi {
   @async
-  void delete(
+  void deleteUser(
     AuthPigeonFirebaseApp app,
   );
 

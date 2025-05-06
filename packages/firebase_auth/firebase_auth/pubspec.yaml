@@ -49,4 +49,7 @@ flutter:
         default_package: firebase_auth_web
       windows:
         pluginClass: FirebaseAuthPluginCApi
+      linux:
+        pluginClass: FirebaseAuthPlugin
+
 

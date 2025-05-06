@@ -32,17 +32,13 @@ class UserWeb extends UserPlatform {
                 isEmailVerified: _webUser.emailVerified,
                 isAnonymous: _webUser.isAnonymous,
                 creationTimestamp: _webUser.metadata.creationTime != null
-                    ? (js_interop.globalContext.getProperty('Date'.toJS)!
-                            as js_interop.JSObject)
-                        .callMethod<js_interop.JSNumber>(
-                            'parse'.toJS, _webUser.metadata.creationTime)
+                    ? (js_interop.globalContext.getProperty('Date'.toJS)! as js_interop.JSObject)
+                        .callMethod<js_interop.JSNumber>('parse'.toJS, _webUser.metadata.creationTime)
                         .toDartInt
                     : null,
                 lastSignInTimestamp: _webUser.metadata.lastSignInTime != null
-                    ? (js_interop.globalContext.getProperty('Date'.toJS)!
-                            as js_interop.JSObject)
-                        .callMethod<js_interop.JSNumber>(
-                            'parse'.toJS, _webUser.metadata.lastSignInTime)
+                    ? (js_interop.globalContext.getProperty('Date'.toJS)! as js_interop.JSObject)
+                        .callMethod<js_interop.JSNumber>('parse'.toJS, _webUser.metadata.lastSignInTime)
                         .toDartInt
                     : null,
                 phoneNumber: _webUser.phoneNumber,
@@ -73,7 +69,7 @@ class UserWeb extends UserPlatform {
   @override
   Future<void> delete() async {
     _assertIsSignedOut(auth);
-    await guardAuthExceptions(_webUser.delete);
+    await guardAuthExceptions(_webUser.deleteUser);
   }
 
   @override
@@ -97,8 +93,7 @@ class UserWeb extends UserPlatform {
   }
 
   @override
-  Future<UserCredentialPlatform> linkWithCredential(
-      AuthCredential credential) async {
+  Future<UserCredentialPlatform> linkWithCredential(AuthCredential credential) async {
     _assertIsSignedOut(auth);
     final userCredential = await guardAuthExceptions(
       () => _webUser.linkWithCredential(
@@ -162,8 +157,7 @@ class UserWeb extends UserPlatform {
   }
 
   @override
-  Future<UserCredentialPlatform> reauthenticateWithCredential(
-      AuthCredential credential) async {
+  Future<UserCredentialPlatform> reauthenticateWithCredential(AuthCredential credential) async {
     _assertIsSignedOut(auth);
 
     auth_interop.UserCredential userCredential = await guardAuthExceptions(
@@ -176,8 +170,7 @@ class UserWeb extends UserPlatform {
   }
 
   @override
-  Future<UserCredentialPlatform> reauthenticateWithPopup(
-      AuthProvider provider) async {
+  Future<UserCredentialPlatform> reauthenticateWithPopup(AuthProvider provider) async {
     _assertIsSignedOut(auth);
 
     auth_interop.UserCredential userCredential = await guardAuthExceptions(
