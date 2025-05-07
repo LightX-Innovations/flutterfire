@@ -69,7 +69,7 @@ class UserWeb extends UserPlatform {
   @override
   Future<void> delete() async {
     _assertIsSignedOut(auth);
-    await guardAuthExceptions(_webUser.deleteUser);
+    await guardAuthExceptions(_webUser.delete);
   }
 
   @override

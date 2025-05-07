@@ -1,24 +1,35 @@
-// // Copyright 2023, the Chromium project authors.  Please see the AUTHORS file
-// // for details. All rights reserved. Use of this source code is governed by a
-// // BSD-style license that can be found in the LICENSE file.
-
-// #include "include/firebase_auth/firebase_auth_plugin_c_api.h"
-
-// #include <flutter/plugin_registrar_windows.h>
-
-// #include "firebase_auth_plugin.h"
-
-// void FirebaseAuthPluginCApiRegisterWithRegistrar(
-//     FlutterDesktopPluginRegistrarRef registrar) {
-//   firebase_auth_windows::FirebaseAuthPlugin::RegisterWithRegistrar(
-//       flutter::PluginRegistrarManager::GetInstance()
-//           ->GetRegistrar<flutter::PluginRegistrarWindows>(registrar));
-// }
-
 #include "firebase_auth/firebase_auth_plugin.h"
 
-// This function is called when the plugin is registered
+#include "firebase_auth_host_plugin.h"
+#include "firebase_auth_user_host_plugin.h"
+#include "multi_factor_resolver_host_plugin.h"
+#include "multi_factor_totp_host_plugin.h"
+#include "multi_factor_totp_secret_host_plugin.h"
+#include "multi_factor_user_host_plugin.h"
+
 void firebase_auth_plugin_register_with_registrar(
     FlPluginRegistrar* registrar) {
-  // Setup platform channel or Pigeon bindings here.
+  FirebaseAuthHostPlugin* auth_host_plugin =
+      new FirebaseAuthHostPlugin(registrar);
+  g_object_unref(auth_host_plugin);
+
+  FirebaseAuthUserHostPlugin* auth_user_plugin =
+      new FirebaseAuthUserHostPlugin(registrar);
+  g_object_unref(auth_user_plugin);
+
+  MultiFactorResolverHostPlugin* multi_factor_resolver_plugin =
+      new MultiFactorResolverHostPlugin(registrar);
+  g_object_unref(multi_factor_resolver_plugin);
+
+  MultiFactorTotpHostPlugin* multi_factor_totp_plugin =
+      new MultiFactorTotpHostPlugin(registrar);
+  g_object_unref(multi_factor_totp_plugin);
+
+  MultiFactorTotpSecretHostPlugin* multi_factor_totp_secret_plugin =
+      new MultiFactorTotpSecretHostPlugin(registrar);
+  g_object_unref(multi_factor_totp_secret_plugin);
+
+  MultiFactorUserHostPlugin* multi_factor_user_plugin =
+      new MultiFactorUserHostPlugin(registrar);
+  g_object_unref(multi_factor_user_plugin);
 }

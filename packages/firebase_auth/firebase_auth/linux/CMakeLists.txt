@@ -7,6 +7,12 @@ set(PLUGIN_NAME "firebase_auth_plugin")
 # Plugin source files.
 list(APPEND PLUGIN_SOURCES
   "firebase_auth_plugin.cpp"
+  "firebase_auth_host_plugin.cpp"
+  "firebase_auth_user_host_plugin.cpp"
+  "multi_factor_user_host_plugin.cpp"
+  "multi_factor_resolver_host_plugin.cpp"
+  "multi_factor_totp_host_plugin.cpp"
+  "multi_factor_totp_secret_host_plugin.cpp"
   "messages.g.cc"
 )
 
